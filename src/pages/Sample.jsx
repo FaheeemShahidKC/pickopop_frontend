@@ -1,28 +1,60 @@
-import React from 'react'
+import React, { useState } from 'react';
+
 function Sample() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const options = ['Option 1', 'Option 2', 'Option 3'];
+
+  const handleToggleDropdown = (e) => {
+    e.preventDefault();
+    setIsOpen(!isOpen);
+  };
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
+
   return (
-    <div className='relative'>
-      <div className="max-sm:">
-        <div className="custom-shape-divider-bottom-1711958709 bg-pp-dark">
-          <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z" className="shape-fill" />
-          </svg>
-        </div>
+    <div className="relative">
+    <button
+      className="bg-white border border-gray-300 rounded-md px-4 py-2 text-gray-700 font-semibold flex items-center justify-between w-full focus:outline-none focus:border-blue-500"
+      onClick={handleToggleDropdown}
+    >
+      {selectedOption || 'Select an option'}
+      <svg
+        className={`w-5 h-5 ml-2 ${isOpen ? 'transform rotate-180' : ''}`}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M19 9l-7 7-7-7"
+        />
+      </svg>
+    </button>
+    {isOpen && (
+      <div className="absolute top-full left-0 mt-2 w-full bg-white border border-gray-300 rounded-md shadow-lg">
+        <ul>
+          {options.map((option, index) => (
+            <li
+              key={index}
+              className="py-2 px-4 cursor-pointer hover:bg-gray-100"
+              onClick={() => handleOptionClick(option)}
+            >
+              {option}
+            </li>
+          ))}
+        </ul>
       </div>
-      <div className=''>
-        <div className="absolute max-md:px-10 max-xl:px-40 max-lg:px-28 top-0 left-0 z-10 px-52 max-sm:py-4 py-14 flex">
-          <img src="../src/assets/scooter.png" className="max-lg:h-80 max-md:h-60 max-sm:h-28" alt="" />
-          <div>
-            <p className='max-lg:text-4xl max-sm:text-2xl text-6xl font-semibold font-serif '>Drop your <br />needs with <br /> <span className='text-white'>PICK 'O' POP</span> <span className='text-white max-sm:hidden'>US</span></p>
-          </div>
-        </div>
-      </div>
-    </div>
+    )}
+  </div>
   );
 }
 
-export default Sample
-
-{/* <div className='bg-blue h-80 test custom-shape-divider-bottom-1711958709'>
-  <h1>1</h1>
-</div> */}
+export default Sample;
