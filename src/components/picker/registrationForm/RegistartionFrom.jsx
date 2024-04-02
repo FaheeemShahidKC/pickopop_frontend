@@ -14,12 +14,12 @@ function RegistartionFrom() {
           }
      };
 
-
      return (
           <div>
                <Header></Header>
                <div className="flex items-center justify-center p-12 bg-pp-dark">
                     <div className="mx-auto w-full max-w-[550px]">
+                         <h1 className='text-2xl py-2 font-semibold text-white'>Fill the registration form to continue. It's safe and used for verification.</h1>
                          <form>
                               <div className="mb-5">
                                    <label
