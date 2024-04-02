@@ -20,6 +20,8 @@ export default {
       'pp-dark': '#143A42',
       'pp-dark-1': '#1E485D',
       'pp-gray': '#D9D9D9',
+      'pp-gray-2': '#426167',
+      'pp-gray-3': '#5A757A',
       blue: '#1fb6ff',
       pink: '#ff49db',
       orange: '#ff7849',

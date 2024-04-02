@@ -1,0 +1,40 @@
+.custom-shape-divider-bottom-1711958709 {
+     /* position: absolute; */
+     top: 0;
+     left: 0;
+     width: 100%;
+     overflow: hidden;
+     line-height: 0;
+     /* height: 1000px; */
+     /* background: #0081F8; */
+}
+
+.custom-shape-divider-bottom-1711958709 svg {
+     position: relative;
+     display: block;
+     width: calc(122% + 1.3px);
+     height: 500px;
+}
+
+.custom-shape-divider-bottom-1711958709 .shape-fill {
+     fill: #fff;
+}
+
+@media not all and (min-width: 976px) {
+     .custom-shape-divider-bottom-1711958709 svg {
+          height: 400px;
+     }
+
+}
+
+@media not all and (min-width: 768px) {
+     .custom-shape-divider-bottom-1711958709 svg {
+          height: 300px;
+     }
+}
+
+@media not all and (min-width: 480px) {
+     .custom-shape-divider-bottom-1711958709 svg {
+          height: 155px;
+     }
+}
