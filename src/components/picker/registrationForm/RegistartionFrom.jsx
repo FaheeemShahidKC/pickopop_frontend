@@ -277,7 +277,7 @@ function RegistartionFrom() {
                               </div>
                               {/*------------------------------------------- password end  */}
                               <div>
-                                   <button className="hover:shadow-form w-full rounded-md bg-pp-dark-1 py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                                   <button className="hover:bg-pp-dark w-full rounded-md bg-pp-dark-1 py-3 px-8 text-center text-base font-semibold text-white outline-none">
                                         Submit for verification
                                    </button>
                               </div>

@@ -8,6 +8,7 @@ import Sample from './pages/Sample'
 import HomePage from './pages/user/HomePage'
 import UserRoute from './routes/UserRoute'
 import PickerRoute from './routes/PickerRoute'
+import AdminRoute from './routes/AdminRoute'
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
       <Router>
       <Routes>
         <Route path='/*' element={<UserRoute></UserRoute>}></Route>
-        <Route path='/picker*' element={<PickerRoute></PickerRoute>}></Route>
-        {/* <Route path='/admin*' element={<UserRoute></UserRoute>}></Route> */}
+        {/* <Route path='/picker*' element={<PickerRoute></PickerRoute>}></Route> */}
+        <Route path='/admin*' element={<AdminRoute></AdminRoute>}></Route>
       </Routes>
     </Router>
     </>
