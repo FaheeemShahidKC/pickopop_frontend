@@ -16,7 +16,7 @@ function App() {
       <Router>
       <Routes>
         <Route path='/*' element={<UserRoute></UserRoute>}></Route>
-        {/* <Route path='/picker*' element={<PickerRoute></PickerRoute>}></Route> */}
+        <Route path='/picker*' element={<PickerRoute></PickerRoute>}></Route>
         <Route path='/admin*' element={<AdminRoute></AdminRoute>}></Route>
       </Routes>
     </Router>
