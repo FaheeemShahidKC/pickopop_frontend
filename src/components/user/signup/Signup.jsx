@@ -1,11 +1,57 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { validateEmail, validateIndianPhoneNumber } from 'project-pack'
+import { signup } from '../../../api/user'
 
 function Signup() {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [mobile, setMobile] = useState()
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [error, setError] = useState('')
+
   const navigate = useNavigate()
+
+  const handleSubmit = async (e) => {
+    console.log('submitting....')
+    e.preventDefault();
+    try {
+      if (!name.trim().length) {
+        setError("Enter your name!");
+        return;
+      } else if (!validateEmail(email)) {
+        setError("Enter a valid email!");
+        return;
+      } else if (!validateIndianPhoneNumber(mobile)) {
+        setError("Enter a valid mobile number!");
+        return;
+      } else if (password.trim().length < 8) {
+        setError("Password must contain at least 8 characters!");
+        return;
+      } else if (password !== confirmPassword) {
+        setError("Passwords don't match!");
+        return;
+      }
+
+      let response = await signup(name, email, mobile, password);
+      if (response?.data.success) {
+        console.log('success')
+        navigate('/verifyOTP')
+
+      } else {
+        setError(response?.data.message);
+      }
+    } catch (err) {
+      console.log(err);
+
+    }
+  }
+
+
   return (
     <div>
-      <div className="min-h-screen  bg-pp-dark py-6 flex flex-col justify-center sm:py-12">
+      <div className="min-h-screen bg-pp-dark py-6 flex flex-col justify-center sm:py-12">
         <div className="relative py-3 sm:max-w-xl sm:mx-auto z-50">
           <div
             className="absolute inset-0 bg-pp-dark-1 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
@@ -19,27 +65,30 @@ function Signup() {
                 <form action="">
                   <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                     <div className="relative">
-                      <input autocomplete="off" id="name" name="name" type="text" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Name" />
+                      <input autocomplete="off" id="name" name="name" onChange={(e) => setName(e.target.value)} type="text" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Name" />
                       <label for="name" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Full Name</label>
                     </div>
                     <div className="relative">
-                      <input autocomplete="off" id="email" name="email" type="text" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Email address" />
+                      <input autocomplete="off" id="email" name="email" onChange={(e) => setEmail(e.target.value)} type="text" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Email address" />
                       <label for="email" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Email Address</label>
                     </div>
                     <div className="relative">
-                      <input autocomplete="off" id="mobile" name="mobile" type="number" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Mobile" />
+                      <input autocomplete="off" id="mobile" name="mobile" onChange={(e) => setMobile(e.target.value)} type="number" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Mobile" />
                       <label for="mobile" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Mobile</label>
                     </div>
                     <div className="relative">
-                      <input autocomplete="off" id="password" name="password" type="password" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" />
+                      <input autocomplete="off" id="password" name="password" onChange={(e) => setPassword(e.target.value)} type="password" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" />
                       <label for="password" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
                     </div>
                     <div className="relative">
-                      <input autocomplete="off" id="confirmPassword" name="confirmPassword" type="password" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Confirm Password" />
+                      <input autocomplete="off" id="confirmPassword" name="confirmPassword" onChange={(e) => {
+                        setConfirmPassword(e.target.value)
+                      }} type="password" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Confirm Password" />
                       <label for="confirmPassword" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Confirm Password</label>
+                      <p className='text-xs px-1 py-1 text-red'>{error}</p>
                     </div>
                     <div className="relative ">
-                      <button className="bg-cyan-500 bg-pp-dark-1   text-white rounded-md px-2 py-1">Submit</button>
+                      <button onClick={handleSubmit} className="bg-cyan-500 bg-pp-dark-1   text-white rounded-md px-2 py-1">Submit</button>
                     </div>
                   </div>
                 </form>
