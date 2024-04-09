@@ -11,7 +11,7 @@ function AdminRoute() {
                <Route path='/login' element={<LoginPage></LoginPage>}></Route>
                <Route element={<IsUserLoggedIn></IsUserLoggedIn>}>
                     <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
-                    <Route path='/userManagement' element={<UserManagementPage></UserManagementPage>}></Route>
+                    <Route path='/users' element={<UserManagementPage></UserManagementPage>}></Route>
                </Route>
           </Routes>
      )

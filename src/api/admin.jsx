@@ -11,3 +11,23 @@ export const login = async (email, password) => {
           errorHandler(error);
      }
 }
+
+export const getUsers = async () => {
+     try {
+          let response = await api.get('/admin/users')
+          return response
+     } catch (error) {
+          errorHandler(error)
+     }
+}
+
+export const blockUser = async (id) => {
+     try {
+          let res = await api.post(`/admin/blockUser/${id}`);
+          console.log(res);
+          return res
+     } catch (err) {
+          console.log(err);
+          errorHandler(err);
+     }
+}
