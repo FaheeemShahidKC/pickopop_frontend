@@ -1,5 +1,5 @@
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 
 const errorHandler = (error) => {
      const axiosError = error;
@@ -13,6 +13,7 @@ const errorHandler = (error) => {
                localStorage.removeItem('profData');
                toast.error(errorResponse.message);
           } else {
+               console.log('=========p');
                toast.error(errorResponse.message);
           }
      } else {

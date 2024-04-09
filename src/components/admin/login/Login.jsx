@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { validateEmail } from 'project-pack'
+import { login as adminLogin } from '../../../api/admin'
+import { toast } from 'sonner'
+import { setAdminCredential } from '../../../store/slice/authSlice'
+import { useDispatch } from 'react-redux'
 
 function Login() {
      const navigate = useNavigate()
+     const [email, setEmail] = useState('')
+     const [password, setPassword] = useState('')
+     const [error, setError] = useState('')
+     const dispatch = useDispatch()
+     const handdleLogin = async (e) => {
+          e.preventDefault()
+          if (!validateEmail(email)) {
+               setError("Enter a valid email")
+          }
+          let response = await adminLogin(email, password);
+          if (response.data.success) {
+               toast.success("Successfully Logged in")
+               dispatch(setAdminCredential(response.data.token))
+               navigate('/admin/dashboard')
+          } else {
+               console.log(response.data.message);
+               toast.error(response.data.message)
+          }
+     }
 
      return (
           <>
@@ -35,6 +59,7 @@ function Login() {
                                                             </label>
                                                        </div>
                                                        <input
+                                                            onChange={(e) => { setEmail(e.target.value) }}
                                                             type="text"
                                                             name="email"
                                                             placeholder=""
@@ -54,12 +79,14 @@ function Login() {
                                                        </div>
                                                        <div className="flex items-center">
                                                             <input
+                                                                 onChange={(e) => { setPassword(e.target.value) }}
                                                                  type="password"
                                                                  name="password"
                                                                  className="block w-full border-0 bg-transparent p-0 text-sm file:my-1 placeholder:text-muted-foreground/90 focus:outline-none focus:ring-0 focus:ring-teal-500 sm:leading-7 text-foreground"
                                                             />
                                                        </div>
                                                   </div>
+                                                       <p className='text-red py-1'>{error}</p>
                                              </div>
                                         </div>
                                         <div className="mt-4 flex items-center justify-between">
@@ -67,12 +94,12 @@ function Login() {
                                                   className=" cursor-pointer text-sm font-medium text-foreground "
                                                   href="/forgot-password"
                                              >
-                                                  Forgot password?
+                                                  Forgot password?<span className='text-navy px-1'>Click.</span>
                                              </p>
                                         </div>
                                         <div className="mt-4 flex items-center justify-end gap-x-2">
                                              <button
-                                                  onClick={() => { navigate('/admin/dashboard') }}
+                                                  onClick={handdleLogin}
                                                   className="font-semibold hover:bg-black hover:text-white hover:ring hover:ring-white transition duration-300 inline-flex items-center justify-center rounded-md text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black h-10 px-4 py-2"
                                                   type="submit"
                                              >

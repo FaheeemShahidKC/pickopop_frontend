@@ -1,6 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { adminLogout } from '../../../store/slice/authSlice'
 
 function NavBar() {
+     const dispatch = useDispatch()
+     const navigate = useNavigate()
+     const handdleLogout = () => {
+          dispatch(adminLogout())
+          
+     }
      return (
           <div className=' w-full h-14 flex px-5 justify-between items-center '>
                <div className="relative text-xs m-4">
@@ -43,7 +52,7 @@ function NavBar() {
                          </svg>
                     </div>
                </div>
-               <button className="bg-pp-dark text-white h-8 py-1 text-sm px-2 rounded">
+               <button onClick={handdleLogout} className="bg-pp-dark text-white h-8 py-1 text-sm px-2 rounded">
                     Logout
                </button>
           </div>

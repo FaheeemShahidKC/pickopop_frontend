@@ -8,8 +8,6 @@ export const login = async (email, password) => {
           console.log(response, "dsfgsdf")
           return response;
      } catch (error) {
-          console.log('sdsaad');
-
           errorHandler(error);
      }
 }
