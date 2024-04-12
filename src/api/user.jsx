@@ -45,3 +45,12 @@ export const verifyOtp = async (otp) => {
           errorHandler(error);
      }
 }
+
+export const logout = async () => {
+     try {
+          const response = await api.get('/logout');
+          return response;
+     } catch (error) {
+          errorHandler(error);
+     }
+}

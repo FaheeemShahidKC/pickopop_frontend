@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { logout } from '../../../api/user'
+import { toast } from 'sonner'
+import { userLogout } from '../../../store/slice/authSlice'
 
 
 function Header() {
+     const { userToken } = useSelector((state) => state.auth)
+     const [isLogIn, setIslogIn] = useState()
+     const dispatch = useDispatch()
+     useEffect(() => {
+          setIslogIn(userToken)
+     }, [])
 
+     const handleLogout = async (e) => {
+          e.preventDefault()
+          const res = await logout()
+          dispatch(userLogout())
+          setIslogIn('')
+          toast.success("You are logged out!")
+     }
+     console.log(userToken, "oooooooooooooooooooooo");
      const navigate = useNavigate()
      return (
           <div className='z-10 '>
@@ -22,12 +40,23 @@ function Header() {
                               </svg>
                               <span className='max-sm:hidden block'> I'm in</span>
                          </button>
-                         <button onClick={() => { navigate('/login') }} className='hover:bg-pp-dark h-7 p-3 bg-pp-gray-3 max-sm:mx-1 mx-2 opacity-70 rounded-md flex items-center font-semibold max-sm:text-xs '>
-                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 max-sm:block hidden">
-                                   <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
-                              </svg>
-                              <span className='max-sm:hidden block'> Register</span>
-                         </button>
+                         {
+                              isLogIn
+                                   ?
+                                   <button onClick={handleLogout} className='hover:bg-pp-dark h-7 p-3 bg-pp-gray-3 max-sm:mx-1 mx-2 opacity-70 rounded-md flex items-center font-semibold max-sm:text-xs '>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 max-sm:block hidden">
+                                             <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+                                        </svg>
+                                        <span className='max-sm:hidden block'> Logout</span>
+                                   </button>
+                                   :
+                                   <button onClick={() => { navigate('/login') }} className='hover:bg-pp-dark h-7 p-3 bg-pp-gray-3 max-sm:mx-1 mx-2 opacity-70 rounded-md flex items-center font-semibold max-sm:text-xs '>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 max-sm:block hidden">
+                                             <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+                                        </svg>
+                                        <span className='max-sm:hidden block'> Register</span>
+                                   </button>
+                         }
                     </div>
                </div>
           </div>

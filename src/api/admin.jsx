@@ -31,3 +31,11 @@ export const blockUser = async (id) => {
           errorHandler(err);
      }
 }
+export const logout = async () => {
+     try {
+          const response = await api.get('/admin/logout');
+          return response;
+     } catch (error) {
+          errorHandler(error);
+     }
+}

@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { adminLogout } from '../../../store/slice/authSlice'
+import { logout } from '../../../api/admin'
 
 function NavBar() {
+     const { adminToken } = useSelector((state) => state.auth)
      const dispatch = useDispatch()
+     const [isLogIn, setIslogIn] = useState(adminToken)
      const navigate = useNavigate()
-     const handdleLogout = () => {
+     const handleLogout = async () => {
+          await logout()
           dispatch(adminLogout())
-          
+          navigate('/admin/login')
      }
      return (
           <div className=' w-full h-14 flex px-5 justify-between items-center '>
@@ -52,9 +56,14 @@ function NavBar() {
                          </svg>
                     </div>
                </div>
-               <button onClick={handdleLogout} className="bg-pp-dark text-white h-8 py-1 text-sm px-2 rounded">
-                    Logout
-               </button>
+               {
+                    adminToken ?
+
+                         <button onClick={handleLogout} className="bg-pp-dark text-white h-8 py-1 text-sm px-2 rounded">
+                              Logout
+                         </button>
+                         : ''
+               }
           </div>
      )
 }

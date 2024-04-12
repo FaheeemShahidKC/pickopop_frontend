@@ -9,10 +9,10 @@ function AdminRoute() {
      return (
           <Routes>
                <Route path='/login' element={<LoginPage></LoginPage>}></Route>
-               <Route element={<IsUserLoggedIn></IsUserLoggedIn>}>
+               {/* <Route element={<IsUserLoggedIn></IsUserLoggedIn>}> */}
                     <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
                     <Route path='/users' element={<UserManagementPage></UserManagementPage>}></Route>
-               </Route>
+               {/* </Route> */}
           </Routes>
      )
 }
