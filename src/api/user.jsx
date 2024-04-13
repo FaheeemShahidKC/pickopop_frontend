@@ -38,7 +38,9 @@ export const verifyOtp = async (otp) => {
                     Authorization: `Bearer ${token}`
                }
           });
-          localStorage.removeItem('userotp')
+          if (response.data.success) {
+               localStorage.removeItem('userotp')
+          }
           return response;
      } catch (error) {
           console.log(error);
