@@ -25,7 +25,7 @@ export const verifyOtp = async (otp, id) => {
 
      try {
           // let token = localStorage.getItem('pickerotp')
-          let response = await api.post('/picker/verifyOTP', { otp, id }, );
+          let response = await api.post('/picker/verifyOTP', { otp, id },);
           // if (response.data.success) {
           //      localStorage.removeItem('userotp')
           // }
@@ -33,5 +33,17 @@ export const verifyOtp = async (otp, id) => {
      } catch (error) {
           console.log(error);
           errorHandler(error);
+     }
+}
+
+export const login = async (email, password) => {
+     try {
+          console.log('baaaaaaaaa');
+          let response = await api.post('/picker/login', { email, password })
+          console.log(response);
+          return response
+     } catch (error) {
+          console.log('error');
+          errorHandler(error)
      }
 }

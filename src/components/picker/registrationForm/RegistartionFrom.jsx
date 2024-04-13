@@ -310,7 +310,7 @@ function RegistrationForm() {
                                    />
                                    {errors.confirmPassword && <p className="text-red text-sm mt-1">{errors.confirmPassword}</p>}
                               </div>
-
+                              <p className='text-xs px-1 py-1'>Already have an account?<span onClick={() => { navigate('/picker/login') }} className='text-bermuda cursor-pointer'> Login.</span></p>
                               <div>
                                    <button
                                         type="submit"
