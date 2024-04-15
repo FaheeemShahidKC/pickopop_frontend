@@ -11,7 +11,7 @@ const IsUserLoggedOut = () => {
      //     userData ? <Navigate to='/' /> : <Outlet />
      // )
      if (userToken) {
-          return <Navigate to='/' />
+          return <Navigate to='/profile' />
      } else {
           return <Outlet />
      }

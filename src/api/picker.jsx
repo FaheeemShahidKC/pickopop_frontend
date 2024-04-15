@@ -47,3 +47,13 @@ export const login = async (email, password) => {
           errorHandler(error)
      }
 }
+
+export const logout = async () => {
+     try {
+          const response = await api.get('/picker/logout');
+          console.log(response,"porthhhhh");
+          return response;
+     } catch (error) {
+          errorHandler(error);
+     }
+}

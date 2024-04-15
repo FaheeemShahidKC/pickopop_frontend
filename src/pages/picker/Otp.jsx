@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { verifyOtp } from '../../api/picker'
 import { toast } from 'sonner'
+import { useDispatch } from 'react-redux'
+import { setPickerCredential } from '../../store/slice/authSlice'
 
 function Otp() {
+     const dispatch = useDispatch()
      const { id } = useParams()
      console.log(id);
      const navigate = useNavigate()
@@ -19,7 +22,8 @@ function Otp() {
 
                let response = await verifyOtp(otp,id)
                if (response.data.success) {
-                    navigate('/picker/home')
+                    await dispatch(setPickerCredential())
+                    navigate('/picker/profile')
                } else {
                     toast.error(response.data.message)
                }

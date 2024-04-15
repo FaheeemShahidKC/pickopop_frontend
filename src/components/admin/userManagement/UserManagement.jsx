@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../navbar/NavBar'
-import { getUsers,blockUser } from '../../../api/admin'
+import { getUsers, blockUser } from '../../../api/admin'
 
 function UserManagement() {
 
@@ -60,8 +60,8 @@ function UserManagement() {
                         <td class="w-1/4 px-3 text-center items-center flex justify-center">
                           {
                             user.isBlock ?
-                              <button onClick={()=>{handleBlock(user._id)}} class="bg-black hover:bg-gray-100 text-gray-800 py-1 px-2 border border-gray-400 rounded shadow">Unblock</button> :
-                              <button onClick={()=>{handleBlock(user._id)}} class="bg-black hover:bg-gray-100 text-gray-800 py-1 px-2 border border-gray-400 rounded shadow">Block</button>
+                              <button onClick={() => { handleBlock(user._id) }} class="bg-black hover:bg-gray-100 text-gray-800 py-1 px-2 border border-gray-400 rounded shadow">Unblock</button> :
+                              <button onClick={() => { handleBlock(user._id) }} class="bg-black hover:bg-gray-100 text-gray-800 py-1 px-2 border border-gray-400 rounded shadow">Block</button>
                           }
                         </td>
                       </tr>

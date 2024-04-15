@@ -51,6 +51,7 @@ export const verifyOtp = async (otp) => {
 export const logout = async () => {
      try {
           const response = await api.get('/logout');
+          console.log(response);
           return response;
      } catch (error) {
           errorHandler(error);

@@ -8,6 +8,7 @@ export const login = async (email, password) => {
           console.log(response, "dsfgsdf")
           return response;
      } catch (error) {
+          console.log("io");
           errorHandler(error);
      }
 }
@@ -31,6 +32,27 @@ export const blockUser = async (id) => {
           errorHandler(err);
      }
 }
+
+export const getPickers = async () => {
+     try {
+          let response = await api.get('/admin/pickers')
+          return response
+     } catch (error) {
+          errorHandler(error)
+     }
+}
+
+export const blockPicker = async (id) => {
+     try {
+          let res = await api.post(`/admin/blockPicker/${id}`);
+          console.log(res,'===============b===============b===========');
+          return res
+     } catch (err) {
+          console.log(err);
+          errorHandler(err);
+     }
+}
+
 export const logout = async () => {
      try {
           const response = await api.get('/admin/logout');

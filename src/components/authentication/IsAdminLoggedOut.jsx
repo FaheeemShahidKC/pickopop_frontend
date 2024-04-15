@@ -4,17 +4,15 @@ import { Navigate, Outlet } from "react-router-dom";
 import { userLogout } from "../../store/slice/authSlice";
 import Login from "../user/login/Login";
 
-const isAdminLoggedOut = () => {
+const IsAdminLoggedOut = () => {
      const { adminToken } = useSelector((state) => state.auth);
-     console.log(userToken)
      console.log('token checking...')
-     // return (
-     //     userData ? <Navigate to='/' /> : <Outlet />
-     // )
-     if (!adminToken){
+     if (adminToken) {
+          return <Navigate to={'/admin/dashboard'}></Navigate>
+     } else {
           return <Outlet />
      }
 
 }
 
-export default isAdminLoggedOut;
+export default IsAdminLoggedOut;

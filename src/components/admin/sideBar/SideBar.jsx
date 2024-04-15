@@ -26,7 +26,7 @@ function SideBar() {
                                    User management
                               </p>
                          </li>
-                         <li className=" p-2 py-3 mb border-x-0 border-gray hover:bg-added-grey-900 cursor-pointer border-t-0 border flex ">
+                         <li onClick={()=>{navigate('/admin/pickers')}} className=" p-2 py-3 mb border-x-0 border-gray hover:bg-added-grey-900 cursor-pointer border-t-0 border flex ">
                               <div className='mr-4'>
                                    <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
                               </div>

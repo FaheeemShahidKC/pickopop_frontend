@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { login } from '../../../api/picker';
 import { toast } from 'sonner';
 import Header from '../../user/header/Header';
+import { useDispatch } from 'react-redux';
+import { setPickerCredential } from '../../../store/slice/authSlice';
 
 function LoginForm() {
+     const dispatch = useDispatch()
      const navigate = useNavigate();
      const [email, setEmail] = useState('');
      const [password, setPassword] = useState('');
@@ -34,7 +37,8 @@ function LoginForm() {
                const response = await login(email, password);
                console.log(response, 'response');
                if (response.data.success) {
-                    navigate(`/picker/dashboard`);
+                    await dispatch(setPickerCredential(response.data.token))
+                    navigate(`/picker/profile`);
                } else {
                     toast.error(response.data.message);
                }

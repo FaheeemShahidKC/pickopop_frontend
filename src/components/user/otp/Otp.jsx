@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { verifyOtp } from '../../../api/user'
 import { toast } from 'sonner'
+import { setUserCredential } from '../../../store/slice/authSlice'
+import { useDispatch } from 'react-redux'
 
 function Otp() {
+     const dispatch = useDispatch()
      const navigate = useNavigate()
      const [otp, setOtp] = useState()
      const [error, setError] = useState('')
@@ -17,7 +20,8 @@ function Otp() {
 
                let response = await verifyOtp(otp)
                if(response.data.success){
-                    navigate('/')
+                    await dispatch(setUserCredential())
+                    navigate('/profile')
                }else{
                     toast.error(response.data.message)
                }
