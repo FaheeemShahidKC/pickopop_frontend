@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { Navigate, Outlet } from "react-router-dom";
 
-const IsPickerLoggedIn = () => {
-     
+const isPickerLoggedIn = () => {
      const { pickerToken } = useSelector((state) => state.auth);
      if (pickerToken) {
           return <Outlet></Outlet>
@@ -12,4 +11,4 @@ const IsPickerLoggedIn = () => {
 
 }
 
-export default IsPickerLoggedIn;
+export default isPickerLoggedIn;

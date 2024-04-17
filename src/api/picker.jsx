@@ -48,10 +48,28 @@ export const login = async (email, password) => {
      }
 }
 
+export const getProfile = async () => {
+     try {
+          const response = await api.get('/picker/profile')
+          return response
+     } catch (error) {
+          console.log(error);
+     }
+}
+
+export const getRejection = async()=>{
+     try {
+          const response = await api.get('/picker/getRejection')
+          return response
+     } catch (error) {
+          console.log(error);
+     }
+}
+
 export const logout = async () => {
      try {
           const response = await api.get('/picker/logout');
-          console.log(response,"porthhhhh");
+          console.log(response, "porthhhhh");
           return response;
      } catch (error) {
           errorHandler(error);

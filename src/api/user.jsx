@@ -33,11 +33,13 @@ export const verifyOtp = async (otp) => {
 
      try {
           let token = localStorage.getItem('userotp')
+          console.log(token);
           let response = await api.post('/verifyOTP', { otp }, {
                headers: {
                     Authorization: `Bearer ${token}`
                }
           });
+          console.log(response.data.success);
           if (response.data.success) {
                localStorage.removeItem('userotp')
           }

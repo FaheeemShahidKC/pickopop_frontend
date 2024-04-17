@@ -54,11 +54,11 @@ function LoginForm() {
                <div className="flex items-center justify-center p-12 h-screen bg-pp-dark">
                     <div className="mx-auto w-full max-w-[450px]">
                          <h1 className="text-2xl py-2 font-semibold my-5 text-white">
-                              Enter email and password to login
+                              Login
                          </h1>
                          <form onSubmit={handleSubmit}>
                               <div className="mb-5">
-                                   <label htmlFor="email" className="mb-3 block text-base font-medium text-white">
+                                   <label htmlFor="email" className="mb-3 block text-xs font-medium text-white">
                                         Email Address
                                    </label>
                                    <input
@@ -66,7 +66,7 @@ function LoginForm() {
                                         name="email"
                                         id="email"
                                         placeholder="Enter your email"
-                                        className={`w-full rounded-md border h-10 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.email && 'border-red-500'
+                                        className={`w-full rounded-md border h-10 border-[#e0e0e0] bg-white py-3 px-6 text-xs font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.email && 'border-red-500'
                                              }`}
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
@@ -75,7 +75,7 @@ function LoginForm() {
                               </div>
                               {/* Password */}
                               <div className="mb-5">
-                                   <label htmlFor="password" className="mb-3 block text-base font-medium text-white">
+                                   <label htmlFor="password" className="mb-3 block text-xs font-medium text-white">
                                         Password
                                    </label>
                                    <input
@@ -83,7 +83,7 @@ function LoginForm() {
                                         name="password"
                                         id="password"
                                         placeholder="Enter your password"
-                                        className={`w-full h-10 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.password && 'border-red-500'
+                                        className={`w-full h-10 rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xs font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.password && 'border-red-500'
                                              }`}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
@@ -94,7 +94,7 @@ function LoginForm() {
                               <div>
                                    <button
                                         type="submit"
-                                        className="hover:bg-pp-dark w-full rounded-md bg-pp-dark-1 py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                                        className="hover:bg-pp-dark w-full rounded-md bg-pp-dark-1 py-3 px-8 text-center text-sm font-semibold text-white outline-none"
                                    >
                                         Submit for verification
                                    </button>

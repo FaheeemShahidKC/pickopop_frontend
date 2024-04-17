@@ -7,6 +7,7 @@ import Otp from '../components/user/otp/Otp'
 import IsUserLoggedOut from '../components/authentication/IsUserLoggedOut'
 import IsUserLoggedIn from '../components/authentication/IsUserLoggedIn'
 import UserProfile from '../components/user/UserProfile'
+import Waiting from '../components/picker/Waiting'
 
 function UserRoute() {
      return (

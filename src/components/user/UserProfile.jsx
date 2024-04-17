@@ -24,6 +24,7 @@ function UserProfile() {
      }
      return (
           <div className="min-h-screen bg-pp-dark flex justify-center items-center">
+               
                <div className="user-card bg-white rounded-2xl p-8 w-full max-w-lg relative overflow-hidden shadow-md">
                     {/* <div className="user-card-img flex justify-center items-center z-10"> */}
                     {/* <img

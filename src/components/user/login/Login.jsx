@@ -24,13 +24,11 @@ function Login() {
             }
             let response = await userLogin(email, password);
             if (response.data.success) {
-                console.log('success')
-                await dispatch(setUserCredential(response.data.token));
                 toast.success(response.data.message)
+                await dispatch(setUserCredential(response.data.token));
                 navigate('/profile')
             } else {
                 toast.success(response.data.message)
-                console.log('nnnnnnnnnnnnnnnn');
             }
 
         } catch (error) {

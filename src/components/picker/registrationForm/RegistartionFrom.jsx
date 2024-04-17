@@ -94,7 +94,7 @@ function RegistrationForm() {
                errors.idProof = 'Please upload your ID proof';
           }
 
-          if(password !== confirmPassword){
+          if (password !== confirmPassword) {
                errors.confirmPassword = "Password doesn't match"
           }
 
@@ -111,11 +111,10 @@ function RegistrationForm() {
                formData.append("idProof", idProofFile)
                formData.append("panCard", panCardFile)
                formData.append("image", profile)
-     
+
                const response = await signup(formData)
-               console.log(response, "resss");
                if (response.data.success) {
-     
+                    toast.success('we have send an OTP to your email address.')
                     navigate(`/picker/otp/${response.data.savedUserid}`)
                } else {
                     toast.error(response.data.message)
@@ -131,13 +130,13 @@ function RegistrationForm() {
           <div>
                <Header />
                <div className="flex items-center justify-center p-12 bg-pp-dark">
-                    <div className="mx-auto w-full max-w-[550px]">
-                         <h1 className="text-2xl py-2 font-semibold text-white">
+                    <div className="mx-auto w-full max-w-[550px] ">
+                         <h1 className="text-lg py-2 font-semibold text-white">
                               Fill the registration form to continue. It's safe and used for verification.
                          </h1>
                          <form onSubmit={handleSubmit}>
                               <div className="mb-5">
-                                   <label htmlFor="name" className="mb-3 block text-base font-medium text-white">
+                                   <label htmlFor="name" className="mb-3 block text-xs font-medium text-white">
                                         Full Name
                                    </label>
                                    <input
@@ -145,7 +144,7 @@ function RegistrationForm() {
                                         name="name"
                                         id="name"
                                         placeholder="Full Name"
-                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.name && 'border-red-500'
+                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xs font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.name && 'border-red-500'
                                              }`}
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
@@ -153,7 +152,7 @@ function RegistrationForm() {
                                    {errors.name && <p className="text-red text-sm mt-1">{errors.name}</p>}
                               </div>
                               <div className="mb-5">
-                                   <label htmlFor="phone" className="mb-3 block text-base font-medium text-white">
+                                   <label htmlFor="phone" className="mb-3 block text-xs font-medium text-white">
                                         Phone Number
                                    </label>
                                    <input
@@ -161,7 +160,7 @@ function RegistrationForm() {
                                         name="phone"
                                         id="phone"
                                         placeholder="Enter your phone number"
-                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.mobile && 'border-red-500'
+                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xs font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.mobile && 'border-red-500'
                                              }`}
                                         value={mobile}
                                         onChange={(e) => setMobile(e.target.value)}
@@ -169,7 +168,7 @@ function RegistrationForm() {
                                    {errors.mobile && <p className="text-red text-sm mt-1">{errors.mobile}</p>}
                               </div>
                               <div className="mb-5">
-                                   <label htmlFor="email" className="mb-3 block text-base font-medium text-white">
+                                   <label htmlFor="email" className="mb-3 block text-xs font-medium text-white">
                                         Email Address
                                    </label>
                                    <input
@@ -177,7 +176,7 @@ function RegistrationForm() {
                                         name="email"
                                         id="email"
                                         placeholder="Enter your email"
-                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.email && 'border-red-500'
+                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xs font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.email && 'border-red-500'
                                              }`}
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
@@ -185,7 +184,7 @@ function RegistrationForm() {
                                    {errors.email && <p className="text-red text-sm mt-1">{errors.email}</p>}
                               </div>
                               <div className="mb-5 pt-3">
-                                   <label htmlFor="email" className="mb-3 block text-base font-medium text-white">
+                                   <label htmlFor="email" className="mb-3 block text-xs font-medium text-white">
                                         Upload your photo
                                    </label>
                                    <div className="shrink-0 py-3">
@@ -204,7 +203,7 @@ function RegistrationForm() {
 
                               {/* Cargo Selection */}
                               <div className="mb-5">
-                                   <label htmlFor="cargo" className="mb-3 block text-base font-medium text-white">
+                                   <label htmlFor="cargo" className="mb-3 block text-xs font-medium text-white">
                                         Select the cargo
                                    </label>
                                    <Sample cargo={cargo} setCargo={setCargo} />
@@ -213,7 +212,7 @@ function RegistrationForm() {
 
                               {/* Account Details */}
                               <div className="mb-5 pt-3">
-                                   <label htmlFor="ifscCode" className="mb-3 block text-base font-medium text-white">
+                                   <label htmlFor="ifscCode" className="mb-3 block text-xs font-medium text-white">
                                         IFSC Code
                                    </label>
                                    <input
@@ -221,7 +220,7 @@ function RegistrationForm() {
                                         name="ifscCode"
                                         id="ifscCode"
                                         placeholder="Enter IFSC code"
-                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.ifscCode && 'border-red-500'
+                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xs font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.ifscCode && 'border-red-500'
                                              }`}
                                         value={ifscCode}
                                         onChange={(e) => setIfscCode(e.target.value)}
@@ -229,7 +228,7 @@ function RegistrationForm() {
                                    {errors.ifscCode && <p className="text-red text-sm mt-1">{errors.ifscCode}</p>}
                               </div>
                               <div className="mb-5">
-                                   <label htmlFor="accountNumber" className="mb-3 block text-base font-medium text-white">
+                                   <label htmlFor="accountNumber" className="mb-3 block text-xs font-medium text-white">
                                         Account Number
                                    </label>
                                    <input
@@ -237,7 +236,7 @@ function RegistrationForm() {
                                         name="accountNumber"
                                         id="accountNumber"
                                         placeholder="Enter account number"
-                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.accountNumber && 'border-red-500'
+                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xs font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.accountNumber && 'border-red-500'
                                              }`}
                                         value={accountNumber}
                                         onChange={(e) => setAccountNumber(e.target.value)}
@@ -246,7 +245,7 @@ function RegistrationForm() {
                               </div>
 
                               <div className="mb-5 pt-3">
-                                   <label htmlFor="panCard" className="mb-3 block text-base font-medium text-white">
+                                   <label htmlFor="panCard" className="mb-3 block text-xs font-medium text-white">
                                         Upload your PAN card
                                    </label>
 
@@ -262,7 +261,7 @@ function RegistrationForm() {
                               </div>
                               {/* ID Proof */}
                               <div className="mb-5 pt-3">
-                                   <label htmlFor="idProof" className="mb-3 block text-base font-medium text-white">
+                                   <label htmlFor="idProof" className="mb-3 block text-xs font-medium text-white">
                                         Upload your ID proof
                                    </label>
                                    <label className="block">
@@ -277,7 +276,7 @@ function RegistrationForm() {
                               </div>
                               {/* Password */}
                               <div className="mb-5">
-                                   <label htmlFor="password" className="mb-3 block text-base font-medium text-white">
+                                   <label htmlFor="password" className="mb-3 block text-xs font-medium text-white">
                                         Password
                                    </label>
                                    <input
@@ -285,7 +284,7 @@ function RegistrationForm() {
                                         name="password"
                                         id="password"
                                         placeholder="Enter your password"
-                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.password && 'border-red-500'
+                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xs font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.password && 'border-red-500'
                                              }`}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
@@ -295,7 +294,7 @@ function RegistrationForm() {
 
                               {/* Confirm Password */}
                               <div className="mb-5">
-                                   <label htmlFor="confirmPassword" className="mb-3 block text-base font-medium text-white">
+                                   <label htmlFor="confirmPassword" className="mb-3 block text-xs font-medium text-white">
                                         Confirm Password
                                    </label>
                                    <input
@@ -303,7 +302,7 @@ function RegistrationForm() {
                                         name="confirmPassword"
                                         id="confirmPassword"
                                         placeholder="Confirm your password"
-                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.confirmPassword && 'border-red-500'
+                                        className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xs font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${errors.confirmPassword && 'border-red-500'
                                              }`}
                                         value={confirmPassword}
                                         onChange={(e) => setConfirmPassword(e.target.value)}
@@ -314,7 +313,7 @@ function RegistrationForm() {
                               <div>
                                    <button
                                         type="submit"
-                                        className="hover:bg-pp-dark w-full rounded-md bg-pp-dark-1 py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                                        className="hover:bg-pp-dark w-full rounded-md bg-pp-dark-1 py-3 px-8 text-center text-xs font-semibold text-white outline-none"
                                    >
                                         Submit for verification
                                    </button>
@@ -327,3 +326,211 @@ function RegistrationForm() {
 }
 
 export default RegistrationForm;
+
+
+// <div>
+//                <Header />
+//                <div className=' bg-pp-dark flex justify-center'>
+
+//                     <h1 className="text-xl py-2  px-12 text-white">
+//                          Fill the registration form to continue as pick'o'pop delivery partner.
+//                     </h1>
+//                </div>
+//                <div className="flex items-center justify-center p-12 bg-pp-dark ">
+
+//                     <form onSubmit={handleSubmit} className='text-xs'>
+//                          <div className="mx-auto w-[800px] ">
+//                               <div className='xl:flex justify-between'>
+
+//                                    <div className='w-full mx-4'>
+//                                         <div className="mb-5 text-xs">
+//                                              <label htmlFor="name" className="mb-3 block  font-medium text-white">
+//                                                   Full Name
+//                                              </label>
+//                                              <input
+//                                                   type="text"
+//                                                   name="name"
+//                                                   id="name"
+//                                                   placeholder="Full Name"
+//                                                   className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6  font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md h-8  ${errors.name && 'border-red-500'
+//                                                        }`}
+//                                                   value={name}
+//                                                   onChange={(e) => setName(e.target.value)}
+//                                              />
+//                                              {errors.name && <p className="text-red text-sm mt-1">{errors.name}</p>}
+//                                         </div>
+//                                         <div className="mb-5">
+//                                              <label htmlFor="phone" className="mb-3 block  font-medium text-white">
+//                                                   Phone Number
+//                                              </label>
+//                                              <input
+//                                                   type="text"
+//                                                   name="phone"
+//                                                   id="phone"
+//                                                   placeholder="Enter your phone number"
+//                                                   className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6  font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md h-8 ${errors.mobile && 'border-red-500'
+//                                                        }`}
+//                                                   value={mobile}
+//                                                   onChange={(e) => setMobile(e.target.value)}
+//                                              />
+//                                              {errors.mobile && <p className="text-red text-sm mt-1">{errors.mobile}</p>}
+//                                         </div>
+//                                         <div className="mb-5">
+//                                              <label htmlFor="email" className="mb-3 block  font-medium text-white">
+//                                                   Email Address
+//                                              </label>
+//                                              <input
+//                                                   type="email"
+//                                                   name="email"
+//                                                   id="email"
+//                                                   placeholder="Enter your email"
+//                                                   className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6  font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md h-8 ${errors.email && 'border-red-500'
+//                                                        }`}
+//                                                   value={email}
+//                                                   onChange={(e) => setEmail(e.target.value)}
+//                                              />
+//                                              {errors.email && <p className="text-red text-sm mt-1">{errors.email}</p>}
+//                                         </div>
+//                                         <div className="mb-5 pt-3">
+//                                              <label htmlFor="email" className="mb-3 block  font-medium text-white">
+//                                                   Upload your photo
+//                                              </label>
+//                                              <div className="shrink-0 py-3">
+//                                                   <img ref={preview_img} id="preview_img" className="h-16 w-16 object-cover rounded-full" src={previewSrc} alt="Current profile photo" />
+//                                              </div>
+//                                              <label className="block">
+//                                                   <span className="sr-only">Choose profile photo</span>
+//                                                   <input
+//                                                        type="file"
+//                                                        onChange={(e) => handleFileChange(e, 'profile')}
+//                                                        className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+//                                                   />
+//                                                   {errors.profile && <p className="text-red text-sm mt-1">{errors.profile}</p>}
+//                                              </label>
+//                                         </div>
+
+//                                         {/* Cargo Selection */}
+//                                         <div className="mb-5">
+//                                              <label htmlFor="cargo" className="mb-3 block  font-medium text-white">
+//                                                   Select the cargo
+//                                              </label>
+//                                              <Sample cargo={cargo} setCargo={setCargo} />
+//                                              {errors.cargo && <p className="text-red text-sm mt-1">{errors.cargo}</p>}
+//                                         </div>
+//                                    </div>
+//                                    <div className='w-full mx-4 '>
+
+//                                         {/* Account Details */}
+//                                         <div className="mb-5 pt-3">
+//                                              <label htmlFor="ifscCode" className="mb-3 block  font-medium text-white">
+//                                                   IFSC Code
+//                                              </label>
+//                                              <input
+//                                                   type="text"
+//                                                   name="ifscCode"
+//                                                   id="ifscCode"
+//                                                   placeholder="Enter IFSC code"
+//                                                   className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6  font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md h-8 ${errors.ifscCode && 'border-red-500'
+//                                                        }`}
+//                                                   value={ifscCode}
+//                                                   onChange={(e) => setIfscCode(e.target.value)}
+//                                              />
+//                                              {errors.ifscCode && <p className="text-red text-sm mt-1">{errors.ifscCode}</p>}
+//                                         </div>
+//                                         <div className="mb-5">
+//                                              <label htmlFor="accountNumber" className="mb-3 block  font-medium text-white">
+//                                                   Account Number
+//                                              </label>
+//                                              <input
+//                                                   type="text"
+//                                                   name="accountNumber"
+//                                                   id="accountNumber"
+//                                                   placeholder="Enter account number"
+//                                                   className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6  font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md h-8 ${errors.accountNumber && 'border-red-500'
+//                                                        }`}
+//                                                   value={accountNumber}
+//                                                   onChange={(e) => setAccountNumber(e.target.value)}
+//                                              />
+//                                              {errors.accountNumber && <p className="text-red text-sm mt-1">{errors.accountNumber}</p>}
+//                                         </div>
+
+//                                         <div className="mb-5 pt-3">
+//                                              <label htmlFor="panCard" className="mb-3 block  font-medium text-white">
+//                                                   Upload your PAN card
+//                                              </label>
+
+//                                              <label className="block">
+//                                                   <span className="sr-only">Choose PAN card</span>
+//                                                   <input
+//                                                        type="file"
+//                                                        onChange={(e) => handleFileChange(e, 'panCard')}
+//                                                        className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+//                                                   />
+//                                              </label>
+//                                              {errors.panCard && <p className="text-red text-sm mt-1">{errors.panCard}</p>}
+//                                         </div>
+//                                         {/* ID Proof */}
+//                                         <div className="mb-5 pt-3">
+//                                              <label htmlFor="idProof" className="mb-3 block  font-medium text-white">
+//                                                   Upload your ID proof
+//                                              </label>
+//                                              <label className="block">
+//                                                   <span className="sr-only">Choose ID proof</span>
+//                                                   <input
+//                                                        type="file"
+//                                                        onChange={(e) => handleFileChange(e, 'idProof')}
+//                                                        className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+//                                                   />
+//                                              </label>
+//                                              {errors.idProof && <p className="text-red text-sm mt-1">{errors.idProof}</p>}
+//                                         </div>
+//                                         {/* Password */}
+//                                         <div className="mb-5">
+//                                              <label htmlFor="password" className="mb-3 block  font-medium text-white">
+//                                                   Password
+//                                              </label>
+//                                              <input
+//                                                   type="password"
+//                                                   name="password"
+//                                                   id="password"
+//                                                   placeholder="Enter your password"
+//                                                   className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6  font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md h-8 ${errors.password && 'border-red-500'
+//                                                        }`}
+//                                                   value={password}
+//                                                   onChange={(e) => setPassword(e.target.value)}
+//                                              />
+//                                              {errors.password && <p className="text-red text-sm mt-1">{errors.password}</p>}
+//                                         </div>
+
+//                                         {/* Confirm Password */}
+//                                         <div className="mb-5">
+//                                              <label htmlFor="confirmPassword" className="mb-3 block  font-medium text-white">
+//                                                   Confirm Password
+//                                              </label>
+//                                              <input
+//                                                   type="password"
+//                                                   name="confirmPassword"
+//                                                   id="confirmPassword"
+//                                                   placeholder="Confirm your password"
+//                                                   className={`w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6  font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md h-8 ${errors.confirmPassword && 'border-red-500'
+//                                                        }`}
+//                                                   value={confirmPassword}
+//                                                   onChange={(e) => setConfirmPassword(e.target.value)}
+//                                              />
+//                                              {errors.confirmPassword && <p className="text-red text-sm mt-1">{errors.confirmPassword}</p>}
+//                                         </div>
+//                                    </div>
+//                               </div>
+//                          </div>
+//                          <div >
+//                               <p className='text-xs px-1 py-1 text-center'>Already have an account?<span onClick={() => { navigate('/picker/login') }} className='text-bermuda cursor-pointer'> Login.</span></p>
+//                               <button
+//                                    type="submit"
+//                                    className="hover:bg-pp-dark text-sm w-full rounded-md bg-pp-dark-1 py-3 px-8 text-center  font-semibold text-white outline-none"
+//                               >
+//                                    Submit for verification
+//                               </button>
+//                          </div>
+//                     </form>
+//                </div>
+//           </div >

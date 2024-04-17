@@ -18,6 +18,7 @@ function Login() {
                setError("Enter a valid email")
           }
           let response = await adminLogin(email, password);
+          console.log(response,'res of admin');
           if (response.data.success) {
                toast.success("Successfully Logged in")
                dispatch(setAdminCredential(response.data.token))

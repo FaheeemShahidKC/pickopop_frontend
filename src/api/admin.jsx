@@ -45,7 +45,18 @@ export const getPickers = async () => {
 export const blockPicker = async (id) => {
      try {
           let res = await api.post(`/admin/blockPicker/${id}`);
-          console.log(res,'===============b===============b===========');
+          console.log(res, '===============b===============b===========');
+          return res
+     } catch (err) {
+          console.log(err);
+          errorHandler(err);
+     }
+}
+
+export const verifyPicker = async (id) => {
+     try {
+          console.log("eh");
+          let res = await api.post(`/admin/verify/${id}`);
           return res
      } catch (err) {
           console.log(err);
@@ -59,5 +70,26 @@ export const logout = async () => {
           return response;
      } catch (error) {
           errorHandler(error);
+     }
+}
+
+export const getPickerData = async (id) => {
+     console.log('badeeeeeeeeeeeeee');
+     try {
+          const response = await api.post(`/admin/pickerDetails/`, { id })
+          console.log(response);
+          return response
+     } catch (error) {
+          errorHandler(error)
+     }
+}
+
+export const reject = async (id, reason) => {
+     try {
+          const response = await api.post('/admin/reject', { id, rejectionReason : reason })
+          return response
+     } catch (error) {
+          console.log(error);
+          errorHandler(error)
      }
 }

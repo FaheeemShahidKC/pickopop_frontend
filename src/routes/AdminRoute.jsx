@@ -6,6 +6,8 @@ import UserManagementPage from '../pages/admin/UserManagementPage'
 import IsAdminLoggedIn from '../components/authentication/IsAdminLoggedIn'
 import IsAdminLoggedOut from '../components/authentication/IsAdminLoggedOut'
 import PickerManagementPage from '../pages/admin/PickerManagementPage'
+import PickerDetails from '../pages/admin/PickerDetails'
+
 
 function AdminRoute() {
      return (
@@ -17,6 +19,7 @@ function AdminRoute() {
                     <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
                     <Route path='/users' element={<UserManagementPage></UserManagementPage>}></Route>
                     <Route path='/pickers' element={<PickerManagementPage></PickerManagementPage>}></Route>
+                    <Route path='/pickerDetails/:id' element={<PickerDetails></PickerDetails>}></Route>
                </Route>
           </Routes>
      )

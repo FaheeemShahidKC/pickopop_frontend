@@ -22,8 +22,8 @@ function Otp() {
 
                let response = await verifyOtp(otp,id)
                if (response.data.success) {
-                    await dispatch(setPickerCredential())
-                    navigate('/picker/profile')
+                    toast.success('Your are signed in successfully now just login to continue')
+                    navigate(`/picker/login`)
                } else {
                     toast.error(response.data.message)
                }

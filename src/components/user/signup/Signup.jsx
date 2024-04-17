@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { validateEmail, validateIndianPhoneNumber } from 'project-pack'
 import { signup } from '../../../api/user'
+import { toast } from 'sonner'
+import errorHandler from '../../../api/errorHandler'
 
 function Signup() {
   const [name, setName] = useState('')
@@ -14,7 +16,6 @@ function Signup() {
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
-    console.log('submitting....')
     e.preventDefault();
     try {
       if (!name.trim().length) {
@@ -35,15 +36,17 @@ function Signup() {
       }
 
       let response = await signup(name, email, mobile, password);
+      console.log(response);
       if (response?.data.success) {
-        console.log('success')
+        toast.success('we have send an OTP to your email address.')
         navigate('/verifyOTP')
       } else {
+        toast.error('There is something wrong please try again.')
         setError(response?.data.message);
       }
-    } catch (err) {
-      console.log(err);
-
+    } catch (error) {
+      console.log(error);
+      errorHandler(error)
     }
   }
 
