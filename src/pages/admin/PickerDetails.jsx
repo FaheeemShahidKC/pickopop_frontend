@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getPickerData, reject } from '../../api/admin'
 import NavBar from '../../components/admin/navbar/NavBar'
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import SideBar from '../../components/admin/sideBar/SideBar'
 
 function PickerDetails() {
@@ -28,6 +28,7 @@ function PickerDetails() {
           fetchData()
           console.log(pickerDetails,'oooooooooooooooooooo');
      },[])
+     
      const handleProfileImg = () => {
           setProfileImg(!profileImg)
      }
@@ -44,6 +45,7 @@ function PickerDetails() {
      const handleSubmit = async (e) => {
           e.preventDefault()
           await reject(pickerDetails._id, reason)
+          return <Navigate to={'/admin/pickers'}></Navigate>
      }
      return (
           <div className='flex'>

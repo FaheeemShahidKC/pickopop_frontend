@@ -18,13 +18,13 @@ function PickerManagement() {
                     if (data) {
                          let verified = []
                          verified = data.pickers.filter((picker) => {
-                              return picker.isVerifiedByAdmin && picker.isVerified
+                              return picker.isVerifiedByAdmin == 'verified' && picker.isVerified
                          })
                          console.log(verified);
                          setPickers(verified)
                          let unVerified = []
                          unVerified = data.pickers.filter((picker) => {
-                              return picker.isVerifiedByAdmin == false && picker.isVerified
+                              return picker.isVerifiedByAdmin == 'pending' && picker.isVerified
                          })
                          setUnverifiedPickers(unVerified)
                          console.log(unVerified, 'sssssssssssssss');

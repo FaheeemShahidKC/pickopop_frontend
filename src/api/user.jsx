@@ -50,6 +50,15 @@ export const verifyOtp = async (otp) => {
      }
 }
 
+export const getProfile = async () => {
+     try {
+          const response = await api.get('/profile')
+          return response
+     } catch (error) {
+          console.log(error);
+     }
+}
+
 export const logout = async () => {
      try {
           const response = await api.get('/logout');
