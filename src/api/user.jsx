@@ -68,3 +68,20 @@ export const logout = async () => {
           errorHandler(error);
      }
 }
+
+export const getDistance = async () => {
+     try {
+          const api = `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=51.4822656,-0.1933769&destinations=51.4994794,-0.1269979&key=gtjpeZs6qV7pJJRFqHN80cUqgfY1XmMd1CVw3NW1Aa44oxaXLFMEvAwTYJLLNkvI`;
+
+          const response = await fetch(api);
+
+          if (!response.ok) {
+               throw new Error('Network response was not ok');
+          }
+
+          const data = await response.json();
+          console.log(data);
+     } catch (error) {
+          errorHandler(error);
+     }
+};

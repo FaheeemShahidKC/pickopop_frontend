@@ -86,7 +86,29 @@ export const getPickerData = async (id) => {
 
 export const reject = async (id, reason) => {
      try {
-          const response = await api.post('/admin/reject', { id, rejectionReason : reason })
+          const response = await api.post('/admin/reject', { id, rejectionReason: reason })
+          return response
+     } catch (error) {
+          console.log(error);
+          errorHandler(error)
+     }
+}
+
+export const getIncome = async () => {
+     try {
+          const response = await api.get('/admin/getIncome')
+          console.log(response);
+          return response
+     } catch (error) {
+          console.log(error, 'heeeeeeee');
+          errorHandler(error)
+     }
+}
+
+export const income = async (id, fuel,mileage) => {
+     try {
+          const response = await api.put('/admin/income', {id, fuel, mileage })
+          console.log(response);
           return response
      } catch (error) {
           console.log(error);

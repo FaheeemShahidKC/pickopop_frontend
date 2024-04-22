@@ -5,7 +5,6 @@ import Signup from '../../components/user/signup/Signup'
 function SignupPage() {
   return (
     <div>
-      <Header></Header>
       <Signup></Signup>
     </div>
   )

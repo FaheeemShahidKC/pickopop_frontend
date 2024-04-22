@@ -14,7 +14,7 @@ import { Toaster } from 'sonner'
 function App() {
   return (
     <>
-    <Toaster></Toaster>
+    <Toaster richColors position='bottom-right'></Toaster>
       <Router>
         <Routes>
           <Route path='/*' element={<UserRoute></UserRoute>}></Route>

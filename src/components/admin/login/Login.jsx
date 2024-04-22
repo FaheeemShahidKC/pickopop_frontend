@@ -16,16 +16,17 @@ function Login() {
           e.preventDefault()
           if (!validateEmail(email)) {
                setError("Enter a valid email")
-          }
-          let response = await adminLogin(email, password);
-          console.log(response,'res of admin');
-          if (response.data.success) {
-               toast.success("Successfully Logged in")
-               dispatch(setAdminCredential(response.data.token))
-               navigate('/admin/dashboard')
           } else {
-               console.log(response.data.message);
-               toast.error(response.data.message)
+               let response = await adminLogin(email, password);
+               console.log(response, 'res of admin');
+               if (response.data.success) {
+                    toast.warning("Successfully Logged in")
+                    dispatch(setAdminCredential(response.data.token))
+                    navigate('/admin/dashboard')
+               } else {
+                    console.log(response.data.message);
+                    toast.error(response.data.message)
+               }
           }
      }
 
@@ -87,7 +88,7 @@ function Login() {
                                                             />
                                                        </div>
                                                   </div>
-                                                       <p className='text-red py-1'>{error}</p>
+                                                  <p className='text-red py-1'>{error}</p>
                                              </div>
                                         </div>
                                         <div className="mt-4 flex items-center justify-between">

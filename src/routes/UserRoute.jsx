@@ -8,6 +8,8 @@ import IsUserLoggedOut from '../components/authentication/IsUserLoggedOut'
 import IsUserLoggedIn from '../components/authentication/IsUserLoggedIn'
 import UserProfile from '../components/user/UserProfile'
 import Waiting from '../components/picker/Waiting'
+import Orders from '../components/user/Orders'
+import OrderForm from '../components/user/OrderForm'
 
 function UserRoute() {
      return (
@@ -20,6 +22,8 @@ function UserRoute() {
                </Route>
                <Route path='' element={<IsUserLoggedIn></IsUserLoggedIn>}>
                     <Route path='/profile' element={<UserProfile></UserProfile>}></Route>
+                    <Route path='/orders' element={<Orders></Orders>}></Route>
+                    <Route path='/neworder' element={<OrderForm></OrderForm>}></Route>
                </Route>
           </Routes>
      )

@@ -5,7 +5,6 @@ import Login from '../../components/user/login/Login'
 function LoginPage() {
   return (
     <div>
-      <Header></Header>
       <Login></Login>
     </div>
   )
