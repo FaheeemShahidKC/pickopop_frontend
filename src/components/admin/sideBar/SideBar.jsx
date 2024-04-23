@@ -39,7 +39,7 @@ function SideBar() {
                                    <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
                               </div>
                               <p className="block cursor-pointer hover:text-indigo-400 max-sm:hidden max-md:hidden">
-                                   Home
+                                   Income management
                               </p>
                          </li>
 

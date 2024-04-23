@@ -35,14 +35,12 @@ function LoginForm() {
                // formData.append('password', password);
 
                const response = await login(email, password);
-               console.log(response, 'response');
                if (response.data.success) {
                     await dispatch(setPickerCredential(response.data.token))
                     navigate(`/picker/profile`);
                } else {
                     toast.error(response.data.message);
                }
-               console.log('Form submitted successfully!');
           } else {
                setErrors(errors);
           }

@@ -18,13 +18,11 @@ function Login() {
                setError("Enter a valid email")
           } else {
                let response = await adminLogin(email, password);
-               console.log(response, 'res of admin');
                if (response.data.success) {
-                    toast.warning("Successfully Logged in")
+                    toast.success("Successfully Logged in")
                     dispatch(setAdminCredential(response.data.token))
                     navigate('/admin/dashboard')
                } else {
-                    console.log(response.data.message);
                     toast.error(response.data.message)
                }
           }

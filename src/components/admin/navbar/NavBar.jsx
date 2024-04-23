@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { adminLogout } from '../../../store/slice/authSlice'
 import { logout } from '../../../api/admin'
+import { toast } from 'sonner'
 
 function NavBar() {
      const { adminToken } = useSelector((state) => state.auth)
@@ -12,6 +13,7 @@ function NavBar() {
      const handleLogout = async () => {
           await logout()
           dispatch(adminLogout())
+          toast.success('You logged out successfully')
           navigate('/admin/login')
      }
      return (

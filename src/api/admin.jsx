@@ -4,11 +4,8 @@ import errorHandler from "./errorHandler";
 export const login = async (email, password) => {
      try {
           let response = await api.post('/admin/login', { email, password });
-          console.log("ssssssssssssss");
-          console.log(response, "dsfgsdf")
           return response;
      } catch (error) {
-          console.log("io");
           errorHandler(error);
      }
 }
@@ -24,12 +21,10 @@ export const getUsers = async () => {
 
 export const blockUser = async (id) => {
      try {
-          let res = await api.post(`/admin/blockUser/${id}`);
-          console.log(res);
-          return res
-     } catch (err) {
-          console.log(err);
-          errorHandler(err);
+          let response = await api.post(`/admin/blockUser/${id}`);
+          return response
+     } catch (error) {
+          errorHandler(error);
      }
 }
 
@@ -44,23 +39,19 @@ export const getPickers = async () => {
 
 export const blockPicker = async (id) => {
      try {
-          let res = await api.post(`/admin/blockPicker/${id}`);
-          console.log(res, '===============b===============b===========');
-          return res
-     } catch (err) {
-          console.log(err);
-          errorHandler(err);
+          let response = await api.post(`/admin/blockPicker/${id}`);
+          return response
+     } catch (error) {
+          errorHandler(error);
      }
 }
 
 export const verifyPicker = async (id) => {
      try {
-          console.log("eh");
-          let res = await api.post(`/admin/verify/${id}`);
-          return res
-     } catch (err) {
-          console.log(err);
-          errorHandler(err);
+          let response = await api.post(`/admin/verify/${id}`);
+          return response
+     } catch (error) {
+          errorHandler(error);
      }
 }
 
@@ -74,10 +65,8 @@ export const logout = async () => {
 }
 
 export const getPickerData = async (id) => {
-     console.log('badeeeeeeeeeeeeee');
      try {
           const response = await api.post(`/admin/pickerDetails/`, { id })
-          console.log(response);
           return response
      } catch (error) {
           errorHandler(error)
@@ -89,7 +78,6 @@ export const reject = async (id, reason) => {
           const response = await api.post('/admin/reject', { id, rejectionReason: reason })
           return response
      } catch (error) {
-          console.log(error);
           errorHandler(error)
      }
 }
@@ -97,21 +85,17 @@ export const reject = async (id, reason) => {
 export const getIncome = async () => {
      try {
           const response = await api.get('/admin/getIncome')
-          console.log(response);
           return response
      } catch (error) {
-          console.log(error, 'heeeeeeee');
           errorHandler(error)
      }
 }
 
-export const income = async (id, fuel,mileage) => {
+export const income = async (id, fuel, mileage) => {
      try {
-          const response = await api.put('/admin/income', {id, fuel, mileage })
-          console.log(response);
+          const response = await api.put('/admin/income', { id, fuel, mileage })
           return response
      } catch (error) {
-          console.log(error);
           errorHandler(error)
      }
 }

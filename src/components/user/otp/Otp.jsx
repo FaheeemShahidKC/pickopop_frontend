@@ -14,7 +14,7 @@ function Otp() {
           e.preventDefault()
           try {
                if (otp.trim().length < 6) {
-                    setError("Fill the OTP")
+                    toast.error("Fill the OTP field.")
                     return
                }
 
@@ -27,7 +27,7 @@ function Otp() {
                     toast.error(response.data.message)
                }
           } catch (error) {
-               console.log(error);
+               toast.warning(error);
           }
      }
      return (

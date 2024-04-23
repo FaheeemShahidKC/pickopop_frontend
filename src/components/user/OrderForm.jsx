@@ -19,7 +19,7 @@ function OrderForm() {
 
           try {
                console.log(origin,destination);
-               const api = `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${origin}&destinations=${destination}&key=gtjpeZs6qV7pJJRFqHN80cUqgfY1XmMd1CVw3NW1Aa44oxaXLFMEvAwTYJLLNkvI`;
+               const api = `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${origin}&destinations=${destination}&key=`;
 
                const response = await fetch(api);
 

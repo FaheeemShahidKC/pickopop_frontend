@@ -17,9 +17,7 @@ function PickerProfile() {
           setIslogIn(pickerToken)
           const fetchData = async () => {
                const response = await getProfile()
-               console.log(response);
                if (response.data.success) {
-                    console.log(response, 'pickerrrrrrrrrrrrrrrrr=======================================');
                     setPickerDetails(response.data.pickerData)
                }
           }

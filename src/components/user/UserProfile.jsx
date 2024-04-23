@@ -21,7 +21,6 @@ function UserProfile() {
           let fetchData = async () => {
                let res = await getProfile();
                setUserdata(res?.data.userData);
-               console.log(res?.data.userData, 'pp');
           };
           fetchData();
      }, []);

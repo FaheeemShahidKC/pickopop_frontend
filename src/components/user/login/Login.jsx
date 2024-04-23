@@ -16,11 +16,10 @@ function Login() {
 
 
     const handleSubmit = async (e) => {
-        console.log("enter to login submit");
         e.preventDefault()
         try {
             if (!validateEmail(email)) {
-                setError("Enter the valid email")
+                toast.error("Enter the valid email address")
                 return
             }
             let response = await userLogin(email, password);
@@ -29,11 +28,10 @@ function Login() {
                 await dispatch(setUserCredential(response.data.token));
                 navigate('/profile')
             } else {
-                toast.success(response.data.message)
+                toast.error(response.data.message)
             }
-
         } catch (error) {
-            console.log(error);
+            toast.warning(error);
         }
     }
 

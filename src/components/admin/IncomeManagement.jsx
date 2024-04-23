@@ -31,13 +31,9 @@ function IncomeManagement() {
                setIncome(response.data.incomeData);
                setIsEditing(false);
                setError(null); // Reset error state on successful submission
+               toast.success('Edited the income details')
           } catch (error) {
-               console.log(error);
-               if (error.response && error.response.data && error.response.data.message) {
-                    setError(error.response.data.message); // Set error message from the server response
-               } else {
-                    setError("An error occurred while submitting the form."); // Generic error message
-               }
+               toast.error(error)
           }
      }
 

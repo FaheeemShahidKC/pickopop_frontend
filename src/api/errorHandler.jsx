@@ -8,16 +8,15 @@ const errorHandler = (error) => {
           const errorResponse = axiosError.response.data;
           if (errorResponse.message === "User is blocked by admin!") {
                localStorage.removeItem('userData');
-               toast.error(errorResponse.message);
+               toast.warning(errorResponse.message);
           } else if (errorResponse.message === "Professional is blocked by admin!") {
                localStorage.removeItem('profData');
-               toast.error(errorResponse.message);
+               toast.warning(errorResponse.message);
           } else {
-               console.log('=========p');
-               toast.error(errorResponse.message);
+               toast.warning(errorResponse.message);
           }
      } else {
-          toast.error('Something went wrong. Please try again!');
+          toast.warning('Something went wrong. Please try again!');
      }
 }
 

@@ -3,17 +3,28 @@ import { useNavigate } from 'react-router-dom'
 import { userLogout } from '../../store/slice/authSlice'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../api/user'
+import { toast } from 'sonner'
 
 function UserHeader() {
      const navigate = useNavigate()
      const dispatch = useDispatch()
      const handleLogout = async (e) => {
-          e.preventDefault()
-          const res = await logout()
-          dispatch(userLogout())
-          navigate('/login')
-          toast.success("You are logged out!")
+          e.preventDefault();
+          try {
+               const res = await logout();
+               if (res.status === 200) {
+                    dispatch(userLogout());
+                    navigate('/login');
+                    toast.success("You are logged out!");
+               } else {
+                    toast.error("Failed to log out. Please try again later.");
+               }
+          } catch (error) {
+               console.log(error);
+               toast.error("An error occurred while logging out. Please try again later.");
+          }
      }
+
      return (
           <div className=''>
                <div className='z-10 '>
