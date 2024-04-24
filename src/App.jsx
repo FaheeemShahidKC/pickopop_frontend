@@ -10,11 +10,12 @@ import UserRoute from './routes/UserRoute'
 import PickerRoute from './routes/PickerRoute'
 import AdminRoute from './routes/AdminRoute'
 import { Toaster } from 'sonner'
+import YourComponent from './components/user/YourComponent'
 
 function App() {
   return (
     <>
-    <Toaster richColors position='bottom-right'></Toaster>
+      <Toaster richColors position='bottom-right'></Toaster>
       <Router>
         <Routes>
           <Route path='/*' element={<UserRoute></UserRoute>}></Route>
