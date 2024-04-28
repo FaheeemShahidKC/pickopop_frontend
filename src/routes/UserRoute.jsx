@@ -10,6 +10,8 @@ import UserProfile from '../components/user/UserProfile'
 import Waiting from '../components/picker/Waiting'
 import Orders from '../components/user/Orders'
 import OrderForm from '../components/user/OrderForm'
+import SuccessPayment from '../components/user/SuccessPayment'
+import CancelPayment from '../components/user/CancelPayment'
 
 function UserRoute() {
      return (
@@ -24,6 +26,8 @@ function UserRoute() {
                     <Route path='/profile' element={<UserProfile></UserProfile>}></Route>
                     <Route path='/orders' element={<Orders></Orders>}></Route>
                     <Route path='/neworder' element={<OrderForm></OrderForm>}></Route>
+                    <Route path='/success' element={<SuccessPayment></SuccessPayment>}></Route>
+                    <Route path='/cancel' element={<CancelPayment></CancelPayment>}></Route>
                </Route>
           </Routes>
      )

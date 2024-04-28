@@ -1,11 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import UserHeader from './UserHeader'
 import { Navigate, useNavigate } from 'react-router-dom'
+import { getOrders } from '../../api/user'
+import ConfirmationModal from '../ConfirmationModal'
 
 function Orders() {
      const navigate = useNavigate()
+     const [orders, setOrders] = useState([])
+
+     useEffect(() => {
+          const fetchData = async() => {
+               const response = await getOrders()
+               if (response.success) {
+                    setOrders(response.data.orders)
+               }
+          }
+          fetchData()
+     }, [])
      return (
           <div className='bg-[#143A42] h-screen p-5'>
+               {/* <ConfirmationModal></ConfirmationModal> */}
                <UserHeader></UserHeader>
                <table className="min-w-full divide-y divide-gray-200 mt-10 overflow-x-scroll text-added-grey-300 ">
                     <thead className="">

@@ -68,19 +68,30 @@ export const logout = async () => {
      }
 }
 
-export const getDistance = async () => {
+export const getIncome = async (origin, destination) => {
      try {
-          const api = `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=51.4822656,-0.1933769&destinations=51.4994794,-0.1269979&key=gtjpeZs6qV7pJJRFqHN80cUqgfY1XmMd1CVw3NW1Aa44oxaXLFMEvAwTYJLLNkvI`;
-
-          const response = await fetch(api);
-
-          if (!response.ok) {
-               throw new Error('Network response was not ok');
-          }
-
-          const data = await response.json();
-          console.log(data);
+          const response = await api.post('/getIncome', { origin, destination });
+          return response;
      } catch (error) {
           errorHandler(error);
      }
 };
+
+export const placeOrder = async (amount) => {
+     try {
+          console.log(amount);
+          const response = await api.post('/placeOrder', { amount })
+          return response
+     } catch (error) {
+          errorHandler(error);
+     }
+}
+
+export const getOrders = async()=>{
+     try {
+          const response = await api.get('/orders')
+          return response
+     } catch (error) {
+          errorHandler(error);
+     }
+}

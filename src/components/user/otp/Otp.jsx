@@ -21,7 +21,7 @@ function Otp() {
                let response = await verifyOtp(otp)
                if(response.data.success){
                     await dispatch(setUserCredential(response.data.token))
-                    toast.success('Welcome to Pick"O"Pop')
+                    toast.success('Welcome to DROPi')
                     navigate('/profile')
                }else{
                     toast.error(response.data.message)
