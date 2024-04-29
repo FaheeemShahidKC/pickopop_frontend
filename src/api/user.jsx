@@ -16,9 +16,9 @@ export const signup = async (name, email, mobile, password) => {
      try {
           console.log('in signup api')
           const response = await api.post('/signup', { name, email, mobile, password })
-          const token = response.data.token;
-          console.log(token);
-          localStorage.setItem('userotp', token)
+          // const token = response.data.token;
+          // console.log(token);
+          // localStorage.setItem('userotp', token)
           console.log(response)
           return response;
      } catch (error) {
@@ -27,26 +27,22 @@ export const signup = async (name, email, mobile, password) => {
      }
 }
 
-export const verifyOtp = async (otp) => {
-     console.log('in api function');
-     console.log(otp);
-
+export const verifyOtp = async (otp, id) => {
      try {
-          let token = localStorage.getItem('userotp')
-          console.log(token);
-          let response = await api.post('/verifyOTP', { otp }, {
-               headers: {
-                    Authorization: `Bearer ${token}`
-               }
-          });
-          console.log(response.data.success);
-          if (response.data.success) {
-               localStorage.removeItem('userotp')
-          }
+          let response = await api.post('/verifyOTP', { otp, id },);
           return response;
      } catch (error) {
           console.log(error);
           errorHandler(error);
+     }
+}
+
+export const resendOtp = async (id) => {
+     try {
+          const response = await api.post('/resend-otp', { id })
+          return response
+     } catch (error) {
+          console.log(error);
      }
 }
 
@@ -87,7 +83,7 @@ export const placeOrder = async (amount) => {
      }
 }
 
-export const getOrders = async()=>{
+export const getOrders = async () => {
      try {
           const response = await api.get('/orders')
           return response

@@ -39,7 +39,7 @@ function Signup() {
       let response = await signup(name, email, mobile, password);
       if (response?.data.success) {
         toast.success('we have send an OTP to your email address.')
-        navigate('/verifyOTP')
+        navigate(`/verifyOTP/${response.data.savedUserid}`)
       } else {
         // toast.error('There is something wrong please try again.')
         toast.warning(response?.data.message);

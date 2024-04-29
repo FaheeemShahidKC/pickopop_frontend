@@ -7,8 +7,8 @@ export const signup = async (formData) => {
                'Content-Type': 'multipart/form-data'
           }
           const response = await api.post('/picker/signup', formData, { headers })
-          const token = response.data.token;
-          localStorage.setItem('pickerotp', token)
+          // const token = response.data.token;
+          // localStorage.setItem('pickerotp', token)
           return response;
      } catch (error) {
           console.log(error)
@@ -17,15 +17,22 @@ export const signup = async (formData) => {
 }
 
 export const verifyOtp = async (otp, id) => {
-     console.log('in api function');
-     console.log(otp);
-
      try {
           let response = await api.post('/picker/verifyOTP', { otp, id },);
           return response;
      } catch (error) {
           console.log(error);
           errorHandler(error);
+     }
+}
+
+export const resendOtp = async (id) => {
+     try {
+          const response = await api.post('/picker/resend-otp', { id })
+          return response
+     } catch (error) {
+          console.log(error)
+          errorHandler(error)
      }
 }
 

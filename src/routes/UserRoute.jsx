@@ -20,7 +20,7 @@ function UserRoute() {
                <Route path='' element={<IsUserLoggedOut></IsUserLoggedOut>}>
                     <Route path='/signup' element={<SignupPage></SignupPage>}></Route>
                     <Route path='/login' element={<LoginPage></LoginPage>}></Route>
-                    <Route path='/verifyOTP' element={<Otp></Otp>}></Route>
+                    <Route path='/verifyOTP/:id' element={<Otp></Otp>}></Route>
                </Route>
                <Route path='' element={<IsUserLoggedIn></IsUserLoggedIn>}>
                     <Route path='/profile' element={<UserProfile></UserProfile>}></Route>
