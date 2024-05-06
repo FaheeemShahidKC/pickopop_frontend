@@ -1,3 +1,17 @@
+import React, { useRef } from 'react'
+
+function A() {
+     return (
+          <div
+               id="popup-modal"
+               tabIndex={-1}
+               className=" bg-gray-950 bg-opacity-60 my-auto fixed flex top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 max-h-full">
+               <img src="https://images.unsplash.com/photo-1546514714-df0ccc50d7bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80" alt="" />
+          </div>
+     )
+}
+
+export default A
 
 
 // <p className='m-2'><span className='z'>Name</span> : <span className='text-xs'>Faheeem shshid</span></p>
@@ -150,59 +164,59 @@
 
 
 
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux"
-import { Navigate, Outlet } from "react-router-dom";
-import { getProfile, getRejection } from "../../api/picker";
-import Waiting from "../picker/Waiting";
+// import { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux"
+// import { Navigate, Outlet } from "react-router-dom";
+// import { getProfile, getRejection } from "../../api/picker";
+// import Waiting from "../picker/Waiting";
 
-const IsPickerLoggedIn = () => {
+// const IsPickerLoggedIn = () => {
 
-     const [isVerifiedByAdmin, setIsVerifiedByAdmin] = useState('')
-     const [loading, setLoading] = useState(true)
+//      const [isVerifiedByAdmin, setIsVerifiedByAdmin] = useState('')
+//      const [loading, setLoading] = useState(true)
 
-     useEffect(() => {
+//      useEffect(() => {
 
-          const fetchData = async () => {
-               try {
+//           const fetchData = async () => {
+//                try {
 
-                    const response = await getProfile()
-                    const rejectionResponse = await getRejection()
-                    console.log(rejectionResponse.data, "eeeeeeeeeeeeeeeeeeeee");
-                    if (response.data.success) {
-                         console.log(response.data.pickerData.isVerifiedByAdmin,"idha");
-                         if (response.data.pickerData.isVerifiedByAdmin) {
-                              setIsVerifiedByAdmin('verified')
-                         } else if (rejectionResponse.data.success) {
-                              setIsVerifiedByAdmin('rejected')
-                         } else {
-                              setIsVerifiedByAdmin('pending')
-                         }
-                         console.log(isVerifiedByAdmin);
-                    }
-               } catch (error) {
-                    console.log(error);
-               } finally {
-                    setLoading(false)
-               }
-          }
-          fetchData()
-     }, [])
+//                     const response = await getProfile()
+//                     const rejectionResponse = await getRejection()
+//                     console.log(rejectionResponse.data, "eeeeeeeeeeeeeeeeeeeee");
+//                     if (response.data.success) {
+//                          console.log(response.data.pickerData.isVerifiedByAdmin, "idha");
+//                          if (response.data.pickerData.isVerifiedByAdmin) {
+//                               setIsVerifiedByAdmin('verified')
+//                          } else if (rejectionResponse.data.success) {
+//                               setIsVerifiedByAdmin('rejected')
+//                          } else {
+//                               setIsVerifiedByAdmin('pending')
+//                          }
+//                          console.log(isVerifiedByAdmin);
+//                     }
+//                } catch (error) {
+//                     console.log(error);
+//                } finally {
+//                     setLoading(false)
+//                }
+//           }
+//           fetchData()
+//      }, [])
 
-     const { pickerToken } = useSelector((state) => state.auth);
-     if (!pickerToken) {
-          return <Navigate to='/picker/login' />
-     }
-     if (loading == false && isVerifiedByAdmin == 'verified') {
-          console.log(isVerifiedByAdmin);
-          console.log("iiiiiiiiiiiiiiiiiii");
-          return <Outlet></Outlet>
-     } else if (loading == false && isVerifiedByAdmin == 'rejected') {
-          return <Navigate to={'/picker/rejected'} />
-     } else if (loading == false && isVerifiedByAdmin == 'pending') {
-          return (<Waiting></Waiting>)
-     }
+//      const { pickerToken } = useSelector((state) => state.auth);
+//      if (!pickerToken) {
+//           return <Navigate to='/picker/login' />
+//      }
+//      if (loading == false && isVerifiedByAdmin == 'verified') {
+//           console.log(isVerifiedByAdmin);
+//           console.log("iiiiiiiiiiiiiiiiiii");
+//           return <Outlet></Outlet>
+//      } else if (loading == false && isVerifiedByAdmin == 'rejected') {
+//           return <Navigate to={'/picker/rejected'} />
+//      } else if (loading == false && isVerifiedByAdmin == 'pending') {
+//           return (<Waiting></Waiting>)
+//      }
 
-}
+// }
 
-export default IsPickerLoggedIn;
+// export default IsPickerLoggedIn;

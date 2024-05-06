@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { adminLogout } from '../../../store/slice/authSlice'
 import { logout } from '../../../api/admin'
 import { toast } from 'sonner'
+import AdminConfirmationModal from '../AdminConfirmationModal'
 
 function NavBar() {
+     const [showConfirmation, setShowConfirmation] = useState(false)
      const { adminToken } = useSelector((state) => state.auth)
      const dispatch = useDispatch()
-     const [isLogIn, setIslogIn] = useState(adminToken)
      const navigate = useNavigate()
      const handleLogout = async () => {
           await logout()
@@ -18,6 +19,10 @@ function NavBar() {
      }
      return (
           <div className=' w-full h-14 flex px-5 justify-between items-center '>
+               {
+                    showConfirmation &&
+                    <AdminConfirmationModal onConfirm={handleLogout} message={'Are you sure?'} onCancel={() => setShowConfirmation(false)}></AdminConfirmationModal>
+               }
                <div className="relative text-xs m-4">
                     <input
                          className="appearance-none text-white border-2 pl-10 border-gray bg-black hover:border-gray-400 transition-colors rounded-md w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-purple-600 focus:border-purple-600 focus:shadow-outline"
@@ -59,12 +64,10 @@ function NavBar() {
                     </div>
                </div>
                {
-                    adminToken ?
-
-                         <button onClick={handleLogout} className="bg-pp-dark text-white h-8 py-1 text-sm px-2 rounded">
-                              Logout
-                         </button>
-                         : ''
+                    adminToken &&
+                    <button onClick={() => { setShowConfirmation(true) }} className="bg-pp-dark text-white h-8 py-1 text-sm px-2 rounded">
+                         Logout
+                    </button>
                }
           </div>
      )

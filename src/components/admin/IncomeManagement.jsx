@@ -17,12 +17,11 @@ function IncomeManagement() {
                setMileage(response.data.incomeData[0].mileage)
           }
           fetchData()
-     }, [])
+     }, [isEditing])
 
      const handleSubmit = async () => {
-          // Validation checks
           if (!mileage || !fuel) {
-               toast.error("Please fill out all fields."); 
+               toast.error("Please fill out all fields.");
                return;
           }
 
@@ -30,7 +29,7 @@ function IncomeManagement() {
                const response = await income(incomeDetails._id, fuel, mileage);
                setIncome(response.data.incomeData);
                setIsEditing(false);
-               setError(null); // Reset error state on successful submission
+               setError(null);
                toast.success('Edited the income details')
           } catch (error) {
                toast.error(error)
@@ -99,7 +98,17 @@ function IncomeManagement() {
                               >
                                    {isEditing ? <span>Submit</span> : <span>Edit</span>}
                               </button>
-
+                              {
+                                   isEditing ? <button
+                                        onClick={() => {
+                                             setIsEditing(false)
+                                        }}
+                                        className="font-semibold hover:bg-black hover:text-white hover:ring hover:ring-white transition duration-300 inline-flex items-center justify-center rounded-md text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black h-8 px-2"
+                                        type="button"
+                                   >
+                                        Cancel
+                                   </button> : ''
+                              }
                          </div>
                     </form>
                </div >
